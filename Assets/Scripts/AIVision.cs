@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Controllers;
 using UnityEngine;
 
 public class AIVision : MonoBehaviour
@@ -12,11 +13,8 @@ public class AIVision : MonoBehaviour
         {
             playersInSight.Add(collision.gameObject.GetComponent<PlayerController>());
             
-            EventManager.instance.aisCanSeePlayer.Add(this.GetComponent<AIController>());
+            EventManager.instance.aisCanSeePlayer.Add(this.GetComponentInParent<AIController>());
         }
-        
-        
-        Debug.Log(playersInSight[0]);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -25,7 +23,7 @@ public class AIVision : MonoBehaviour
         {
             playersInSight.Remove(collision.gameObject.GetComponent<PlayerController>());
             
-            EventManager.instance.aisCanSeePlayer.Remove(this.GetComponent<AIController>());
+            EventManager.instance.aisCanSeePlayer.Remove(this.GetComponentInParent<AIController>());
         }
     }
 }

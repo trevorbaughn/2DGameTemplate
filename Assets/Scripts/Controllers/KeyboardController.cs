@@ -1,76 +1,73 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardController : PlayerController
+namespace Controllers
 {
-    #region KeyCodes
-    [Header("Control Key Codes")]
-    [SerializeField] private KeyCode moveUp;
-    [SerializeField] private KeyCode moveDown;
-    [SerializeField] private KeyCode moveLeft;
-    [SerializeField] private KeyCode moveRight;
-    [SerializeField] private KeyCode shoot;
-
-    //debugging keys
-    [SerializeField] private KeyCode responsibilityUp;
-    [SerializeField] private KeyCode responsibilityDown;
-    #endregion KeyCodes
-
-    // Start is called before the first frame update
-    protected override void Start()
+    public class KeyboardController : PlayerController
     {
-        base.Start();
-    }
+        #region KeyCodes
+        [Header("Control Key Codes")]
+        [SerializeField] private KeyCode moveUp;
+        [SerializeField] private KeyCode moveDown;
+        [SerializeField] private KeyCode moveLeft;
+        [SerializeField] private KeyCode moveRight;
+        [SerializeField] private KeyCode shoot;
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-    }
+        //debugging keys
+        [SerializeField] private KeyCode responsibilityUp;
+        [SerializeField] private KeyCode responsibilityDown;
+        #endregion KeyCodes
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-    protected override void ProcessInputs()
-    {
-        if (Input.GetKey(moveUp))
+        // Start is called before the first frame update
+        protected override void Start()
         {
-            pawn.MoveUp();
+            base.Start();
         }
 
-        if (Input.GetKey(moveDown))
+        protected override void OnDestroy()
         {
-            pawn.MoveDown();
+            base.OnDestroy();
         }
 
-        if (Input.GetKey(moveLeft))
-        {
-            pawn.MoveLeft();
-        }
 
-        if (Input.GetKey(moveRight))
-        {
-            pawn.MoveRight();
-        }
 
-        if (Input.GetKeyDown(shoot))
+        protected override void MakeDecisions()
         {
-            pawn.Shoot();
-        }
+            if (Input.GetKey(moveUp))
+            {
+                Pawn.MoveUp();
+            }
 
-        //debug keys
+            if (Input.GetKey(moveDown))
+            {
+                Pawn.MoveDown();
+            }
 
-        if (Input.GetKeyDown(responsibilityUp))
-        {
-            pawn.GetComponent<Responsibility>().current += 5;
-        }
+            if (Input.GetKey(moveLeft))
+            {
+                Pawn.MoveLeft();
+            }
 
-        if (Input.GetKeyDown(responsibilityDown))
-        {
-            pawn.GetComponent<Responsibility>().current -= 5;
+            if (Input.GetKey(moveRight))
+            {
+                Pawn.MoveRight();
+            }
+
+            if (Input.GetKeyDown(shoot))
+            {
+                Pawn.Shoot();
+            }
+
+            //debug keys
+
+            if (Input.GetKeyDown(responsibilityUp))
+            {
+                Pawn.GetComponent<Responsibility>().current += 5;
+            }
+
+            if (Input.GetKeyDown(responsibilityDown))
+            {
+                Pawn.GetComponent<Responsibility>().current -= 5;
+            }
         }
     }
 }

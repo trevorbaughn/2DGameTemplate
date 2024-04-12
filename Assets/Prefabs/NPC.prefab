@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 396823594471752375}
   - component: {fileID: 1576444342855646557}
   - component: {fileID: 5340250645071284137}
+  - component: {fileID: 7921417053148302020}
   m_Layer: 6
   m_Name: VisionCone
   m_TagString: Untagged
@@ -100,7 +101,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -133,6 +134,19 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.29}
       - {x: 0.5, y: -0.29}
   m_UseDelaunayMesh: 0
+--- !u!114 &7921417053148302020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703944337500295238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70800a9aa1ca6b58847a6f0bbf98a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playersInSight: []
 --- !u!1 &7458408232621436277
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5145517110627038536}
   - component: {fileID: 2829075994378694776}
+  - component: {fileID: 1112854418424451923}
   - component: {fileID: 3749535758449508628}
   - component: {fileID: 12039056484386786}
   - component: {fileID: 4277727167281412114}
@@ -222,6 +237,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1112854418424451923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458408232621436277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6c087e38ec9f5279f62a252fbb8807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3749535758449508628
 MonoBehaviour:
   m_ObjectHideFlags: 0

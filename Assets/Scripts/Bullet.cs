@@ -24,7 +24,6 @@ public class Bullet : MonoBehaviour, IKillable
     public void OnTriggerEnter2D(Collider2D other)
     {
         
-        Debug.Log("Hellotest");
         other.GetComponent<Health>().TakeDamage(damage);
         
         //unload self

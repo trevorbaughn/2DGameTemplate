@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23f46d0b56388246b7be909e4d3855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawn: {fileID: 999504984460055079}
   controllerID: 0
   moveUp: 119
   moveDown: 115
@@ -208,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bad3753242a3042a86a2eb91269a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   maxMoveSpeed: 15
   baseMoveSpeed: 15
   moveSpeed: 15

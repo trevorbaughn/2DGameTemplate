@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Controllers;
 using UnityEngine;
 
-public abstract class AIController : MonoBehaviour
+public abstract class AIController : Controller
 {
-    public enum AIStates {};
+    public enum AIStates {Idle, Chase};
     [SerializeField] protected AIStates currentState;
     protected float timeEnteredCurrentState;
 
+    protected Vector3 TargetPosition;
+
     // Start is called before the first frame update
-    protected void Start()
+    protected new virtual void Start()
     {
+        base.Start();
+        
         //add itself to list of ais
         GameManager.instance.ais.Add(this);
-
-        //remember to attach controller to pawn
-        //gameObject.GetComponentInChildren<Pawn>().controller = this;
     }
     protected void OnDestroy()
     {
@@ -38,5 +40,10 @@ public abstract class AIController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public virtual PlayerController CanSeePlayer(PlayerController player)
+    {
+        return this.GetComponentInChildren<AIVision>().playersInSight[0];
     }
 }
