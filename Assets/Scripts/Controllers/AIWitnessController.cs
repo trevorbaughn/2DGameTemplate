@@ -28,7 +28,6 @@ namespace Controllers
 
         private void DoIdleState()
         {
-            Debug.Log("idle");
             //do nothing
         }
     }

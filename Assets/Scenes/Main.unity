@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 6
   maxSpeed: 6
-  followTarget: {fileID: 0}
+  followTarget: {fileID: 442127342}
 --- !u!1 &99183216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1413,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5340250645071284137, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340250645071284137, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
@@ -2006,12 +2010,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435500912}
   m_CullTransparentMesh: 1
+--- !u!1 &442127342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7206751154207410832, guid: 679abe65a2c57fefd9d94d9d5501e94f, type: 3}
+  m_PrefabInstance: {fileID: 947298383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &442127344 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 496648855523899036, guid: 679abe65a2c57fefd9d94d9d5501e94f, type: 3}
   m_PrefabInstance: {fileID: 947298383}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 442127342}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79b64362432bce446b53836db2e9ef48, type: 3}

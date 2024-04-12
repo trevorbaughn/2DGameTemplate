@@ -7,8 +7,10 @@ public class NPCPawn : Pawn, IKillable
 {
     public Health health;
     
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+        
         health = GetComponent<Health>();
     }
 
