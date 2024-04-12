@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 72588678}
   - component: {fileID: 72588680}
   - component: {fileID: 72588679}
+  - component: {fileID: 72588681}
   m_Layer: 0
   m_Name: Gameplay Camera
   m_TagString: Untagged
@@ -215,6 +216,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &72588681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72588677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aef5073d53626d5d94f8fc6eea94165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  followTarget: {fileID: 178915276}
 --- !u!1 &99183216
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,12 +380,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155551099}
   m_CullTransparentMesh: 1
+--- !u!1 &178915276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7206751154207410832, guid: 679abe65a2c57fefd9d94d9d5501e94f, type: 3}
+  m_PrefabInstance: {fileID: 815275929658343539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &178915277 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 496648855523899036, guid: 679abe65a2c57fefd9d94d9d5501e94f, type: 3}
   m_PrefabInstance: {fileID: 815275929658343539}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 178915276}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79b64362432bce446b53836db2e9ef48, type: 3}
