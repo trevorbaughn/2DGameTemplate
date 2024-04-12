@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour
@@ -7,6 +9,8 @@ public class Shooter : MonoBehaviour
     #region Variables
     public float timeBetweenShots;
     public float shootForce;
+
+    private Vector3 _mousePos;
     #endregion Variables
 
     /// <summary>
@@ -38,7 +42,18 @@ public class Shooter : MonoBehaviour
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         if (bulletRb != null)
         {
-            bulletRb.AddForce(transform.up * shootForce);
+            bulletRb.AddForce(-(this.transform.position - _mousePos).normalized * shootForce);
         }
+    }
+
+    private void Update()
+    {
+        //rotation
+        _mousePos = Input.mousePosition;
+        _mousePos.z = 0;
+     
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+        _mousePos.x = _mousePos.x - objectPos.x;
+        _mousePos.y = _mousePos.y - objectPos.y;
     }
 }

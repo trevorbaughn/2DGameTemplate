@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMover))]
-[RequireComponent(typeof(Shooter))]
 public class PlayerPawn : Pawn, IKillable
 {
     private PlayerMover mover;
@@ -16,7 +15,7 @@ public class PlayerPawn : Pawn, IKillable
     {
         //load mover
         mover = GetComponent<PlayerMover>();
-        shooter = GetComponent<Shooter>();
+        shooter = GetComponentInChildren<Shooter>();
     }
 
     public void MoveUp()

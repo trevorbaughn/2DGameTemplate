@@ -15,7 +15,10 @@ namespace Controllers
         //debugging keys
         [SerializeField] private KeyCode responsibilityUp;
         [SerializeField] private KeyCode responsibilityDown;
+        [SerializeField] private KeyCode toggleCameraMovement;
         #endregion KeyCodes
+
+        private bool _isCameraMovementOn = true;
 
         // Start is called before the first frame update
         protected override void Start()
@@ -67,6 +70,22 @@ namespace Controllers
             if (Input.GetKeyDown(responsibilityDown))
             {
                 Pawn.GetComponent<Responsibility>().current -= 5;
+            }
+
+            if (Input.GetKeyDown(toggleCameraMovement))
+            {
+                CameraController camera = FindObjectOfType<CameraController>();
+                if (_isCameraMovementOn)
+                {
+                    camera.currentSpeed = camera.maxSpeed;
+                }
+                else
+                {
+                    camera.currentSpeed = 0;
+                }
+
+                _isCameraMovementOn = !_isCameraMovementOn;
+
             }
         }
     }
