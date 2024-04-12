@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AIController : Controller
+public abstract class AIController : MonoBehaviour
 {
     public enum AIStates {};
     [SerializeField] protected AIStates currentState;
     protected float timeEnteredCurrentState;
 
     // Start is called before the first frame update
-    protected override void Start()
+    protected void Start()
     {
         //add itself to list of ais
         GameManager.instance.ais.Add(this);
@@ -17,7 +17,7 @@ public abstract class AIController : Controller
         //remember to attach controller to pawn
         //gameObject.GetComponentInChildren<Pawn>().controller = this;
     }
-    protected override void OnDestroy()
+    protected void OnDestroy()
     {
         //remove itself from list of players
         GameManager.instance.ais.Remove(this);

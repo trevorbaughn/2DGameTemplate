@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPawn : Pawn
+[RequireComponent(typeof(PlayerMover))]
+[RequireComponent(typeof(Shooter))]
+public class PlayerPawn : Pawn, IKillable
 {
-    public bool isInteracting = false;
     private PlayerMover mover;
-    public SpriteRenderer sprite;
+    private Shooter shooter;
+    [SerializeField] private Transform shootPoint;
+
 
     // Start is called before the first frame update
     private void Start()
     {
         //load mover
         mover = GetComponent<PlayerMover>();
+        shooter = GetComponent<Shooter>();
     }
 
-    public void MoveForward()
+    public void MoveUp()
     {
         //use the mover to move forward if not null
         if (mover != null)
@@ -23,7 +27,7 @@ public class PlayerPawn : Pawn
             mover.MoveForward(moveSpeed);
         }
     }
-    public void MoveBackward()
+    public void MoveDown()
     {
         //use the mover to move backward if not null
         if (mover != null)
@@ -46,5 +50,23 @@ public class PlayerPawn : Pawn
         {
             mover.MoveRight(-moveSpeed);
         }
+    }
+
+    /// <summary>
+    /// Shoots a bullet
+    /// </summary>
+    public void Shoot()
+    {
+        shooter.Shoot(BulletManager.instance.prefab, shooter.shootForce, this, shootPoint.transform);
+    }
+
+
+    /// <summary>
+    /// Unloads the player pawn, to be loaded again later.  "Fakes" death to prevent needing to redo
+    /// things too heavily later.  Just some data change stuff.
+    /// </summary>
+    public void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 }

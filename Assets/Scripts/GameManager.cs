@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     //static (stays same) game manager instance
     public static GameManager instance;
     public static AudioManager audioManager;
+    public static EventManager eventManager;
 
     [Header("Lists")]
     public List<PlayerController> players;
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour
 
         //attach audiomanager to gamemanager
         audioManager = AudioManager.instance;
+        
+        eventManager = EventManager.instance;
     }
 
     //deactivate all gamestates
@@ -76,6 +80,8 @@ public class GameManager : MonoBehaviour
     {
         DeactivateAllStates();
         mainMenuStateObject.SetActive(true);
+        
+        ActivateGameplayState(); //temp; there is no main menu
     }
 
     public void ActivateOptionsState()
@@ -100,5 +106,58 @@ public class GameManager : MonoBehaviour
     {
         DeactivateAllStates();
         gameplayStateObject.SetActive(true);
+        ResetGame();
+    }
+
+    /// <summary>
+    /// resets game
+    /// NOTE: currently only reorders players
+    /// </summary>
+    private void ResetGame()
+    {
+        Utils.Player playerUtils = new Utils.Player();
+        playerUtils.Reorder();
+    }
+
+}
+
+
+//game utilities that aren't necessarily managed data, but should be accessible by anything
+namespace Utils
+{
+    //player-related utilities
+    public class Player
+    {
+        /// <summary>
+        /// return a list of players using a keyboard
+        /// </summary>
+        /// <returns></returns>
+        public List<KeyboardController> GetKeyboardPlayers()
+        {
+            return new List<KeyboardController> (GameManager.instance.players.OfType<KeyboardController>()).ToList();
+        }
+
+        /// <summary>
+        /// reorder player list by controllerID to keep consistent with list index
+        /// for fast "id"
+        /// </summary>
+        public void Reorder()
+        {
+            GameManager.instance.players = (from player in GameManager.instance.players
+                       orderby player.controllerID descending select player).ToList();
+        }
+
+        //if specific player exists
+        public bool Exists(int idToFind)
+        {
+            return GameManager.instance.players.Exists((PlayerController controller) => controller.controllerID == idToFind);
+        }
+
+        //overload for if any player exists
+        public bool Exists()
+        {
+            if (GameManager.instance.players.Count > 0) return true;
+            return false;
+        }
     }
 }
