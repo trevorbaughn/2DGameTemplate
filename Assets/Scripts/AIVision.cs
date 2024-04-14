@@ -9,7 +9,12 @@ public class AIVision : MonoBehaviour
     public List<PlayerController> playersInSight;
 
     public List<GameObject> sightableObjectsInSight;
-    
+
+    private void Start()
+    {
+        GameManager.instance.visionCones.Add(this.gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -24,11 +29,7 @@ public class AIVision : MonoBehaviour
             sightableObjectsInSight.Add(collision.gameObject);
         }
     }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        
-    }
+    
 
     private void OnTriggerExit2D(Collider2D collision)
     {

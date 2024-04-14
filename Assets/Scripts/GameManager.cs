@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Lists")]
     public List<PlayerController> players;
     public List<AIController> ais;
+    public List<GameObject> visionCones;
 
 
     [Header("Screen State Objects")]
