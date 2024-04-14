@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
+
+    public string deathEventName;
+    public float deathEventResponsibilityWeight;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +61,8 @@ public class Health : MonoBehaviour
         this.gameObject.SetActive(false);
        
         //TODO: play death sound
+        
+        EventManager.instance.FormImpressions(deathEventName, deathEventResponsibilityWeight);
 
         //if it is a player, go to game over state
         if(this.CompareTag("Player"))

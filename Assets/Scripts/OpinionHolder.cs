@@ -6,12 +6,12 @@ public class OpinionHolder : MonoBehaviour
 {
     [SerializeField] private bool isGood = true;
 
-    private List<Opinion> _impressions;
+    public List<Opinion> Impressions;
 
     public float ImpressionOfPlayer()
     {
         float impression = 0;
-        foreach(Opinion opinion in _impressions)
+        foreach(Opinion opinion in Impressions)
         {
             impression += opinion.responsibilityWeight;
         }
@@ -25,7 +25,7 @@ public class OpinionHolder : MonoBehaviour
         {
             objectiveResponsibility *= -1;
         }
-        _impressions.Add(new Opinion(eventName, objectiveResponsibility));
+        Impressions.Add(new Opinion(eventName, objectiveResponsibility));
     }
 
     public void GiveOpinion(OpinionHolder toGiveTo, Opinion toGive)

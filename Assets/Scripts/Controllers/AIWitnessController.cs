@@ -65,7 +65,9 @@ namespace Controllers
             
             if (Vector3.Distance(transform.position, friend.transform.position) > 2)
                 this.Pawn.MoveForward();
-
+            
+            OpinionHolder opinionHolder = GetComponent<OpinionHolder>();
+            opinionHolder.GiveOpinion(friend.GetComponent<OpinionHolder>(), opinionHolder.Impressions[Random.Range(0, opinionHolder.Impressions.Count)]);
         }
     }
 }

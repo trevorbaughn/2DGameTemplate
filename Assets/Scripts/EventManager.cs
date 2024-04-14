@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
     
-    public List<AIController> aisCanSeePlayer;
+    public List<OpinionHolder> opinionHoldersCanSeePlayer;
     
     //Awake is called before Start
     private void Awake()
@@ -23,16 +25,19 @@ public class EventManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FormImpressions(string eventName, float responsibilityWeight)
     {
-        
+        foreach (OpinionHolder opinionHolder in opinionHoldersCanSeePlayer)
+        {
+            opinionHolder.CreateOpinion(eventName, responsibilityWeight);
+        }
     }
+    
+    
 }

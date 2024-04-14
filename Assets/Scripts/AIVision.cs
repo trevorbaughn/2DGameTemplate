@@ -15,7 +15,8 @@ public class AIVision : MonoBehaviour
         {
             playersInSight.Add(collision.gameObject.GetComponent<PlayerController>());
             
-            EventManager.instance.aisCanSeePlayer.Add(this.GetComponentInParent<AIController>());
+            if(collision.GetComponent<OpinionHolder>())
+                EventManager.instance.opinionHoldersCanSeePlayer.Add(this.GetComponentInParent<OpinionHolder>());
         }
 
         if (collision.CompareTag("Sightable"))
@@ -30,7 +31,8 @@ public class AIVision : MonoBehaviour
         {
             playersInSight.Remove(collision.gameObject.GetComponent<PlayerController>());
             
-            EventManager.instance.aisCanSeePlayer.Remove(this.GetComponentInParent<AIController>());
+            if(collision.GetComponent<OpinionHolder>())
+                EventManager.instance.opinionHoldersCanSeePlayer.Remove(this.GetComponentInParent<OpinionHolder>());
         }
         
         if (sightableObjectsInSight.Contains(collision.gameObject))

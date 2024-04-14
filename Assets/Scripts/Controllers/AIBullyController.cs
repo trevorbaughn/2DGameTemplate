@@ -33,9 +33,12 @@ namespace Controllers
                 case AIStates.WatchAndShoot:
                     DoWatchAndShootState();
 
-                    if (target.GetComponent<Health>().currentHealth <= 0)
+                    if (target.GetComponent<Health>() != null)
                     {
-                        target = GameManager.instance.players[0].gameObject;
+                        if (target.GetComponent<Health>().currentHealth <= 0)
+                        {
+                            target = GameManager.instance.players[0].gameObject;
+                        }
                     }
                     break;
             }
