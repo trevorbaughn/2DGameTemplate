@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = System.Numerics.Vector3;
 
 public class OpinionHolder : MonoBehaviour
 {
     [SerializeField] private bool isGood = true;
+    [SerializeField] private GameObject prefab;
 
     public List<Opinion> Impressions;
+
+   
 
     public float ImpressionOfPlayer()
     {
@@ -21,11 +28,19 @@ public class OpinionHolder : MonoBehaviour
 
     public void CreateOpinion(string eventName, float objectiveResponsibility)
     {
+        Debug.Log("Create Opinion: " + this.name + ", " + eventName);
         if (!isGood)
         {
             objectiveResponsibility *= -1;
         }
-        Impressions.Add(new Opinion(eventName, objectiveResponsibility));
+        
+        GameObject impression = Instantiate(prefab, this.transform);
+        Opinion opinion = impression.GetComponent<Opinion>();
+        opinion.name = eventName;
+        opinion.responsibilityWeight = objectiveResponsibility;
+        Impressions.Add(opinion);
+        impression.name = eventName;
+        impression.transform.parent = this.transform;
     }
 
     public void GiveOpinion(OpinionHolder toGiveTo, Opinion toGive)

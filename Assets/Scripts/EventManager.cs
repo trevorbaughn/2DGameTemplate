@@ -33,9 +33,11 @@ public class EventManager : MonoBehaviour
 
     public void FormImpressions(string eventName, float responsibilityWeight)
     {
+        
         foreach (OpinionHolder opinionHolder in opinionHoldersCanSeePlayer)
         {
             opinionHolder.CreateOpinion(eventName, responsibilityWeight);
+            Debug.Log("Form Impressions: " + opinionHolder.name);
         }
     }
     

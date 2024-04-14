@@ -9,6 +9,7 @@ namespace Controllers
         [SerializeField] private float timeToMoveToFriend;
 
         private AIVision _vision;
+        private OpinionHolder opinionHolder;
         
         // Start is called before the first frame update
          protected override void Start()
@@ -18,6 +19,8 @@ namespace Controllers
             _vision = GetComponentInChildren<AIVision>();
         
             ChangeState(AIStates.Idle);
+
+            opinionHolder = GetComponent<OpinionHolder>();
         }
 
         protected override void MakeDecisions()
@@ -66,8 +69,17 @@ namespace Controllers
             if (Vector3.Distance(transform.position, friend.transform.position) > 2)
                 this.Pawn.MoveForward();
             
-            OpinionHolder opinionHolder = GetComponent<OpinionHolder>();
-            opinionHolder.GiveOpinion(friend.GetComponent<OpinionHolder>(), opinionHolder.Impressions[Random.Range(0, opinionHolder.Impressions.Count)]);
+            Opinion opinionToGive = opinionHolder.Impressions[Random.Range(0, opinionHolder.Impressions.Count)];
+
+            OpinionHolder friendOpinionHolder = friend.GetComponent<OpinionHolder>();
+            foreach (Opinion opinion in friendOpinionHolder.Impressions)
+            {
+                if (opinion.name == opinionToGive.name)
+                {
+                    return;
+                }
+            }
+            opinionHolder.GiveOpinion(friend.GetComponent<OpinionHolder>(), opinionToGive);
         }
     }
 }

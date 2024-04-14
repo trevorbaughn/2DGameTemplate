@@ -451,6 +451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGood: 1
+  prefab: {fileID: 1234862460512897942, guid: d1dde7ab2850e6feb93188702ac9ba94, type: 3}
+  Impressions: []
 --- !u!114 &1112854418424451923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  deathEventName: 
+  deathEventResponsibilityWeight: 0
 --- !u!61 &4277727167281412114
 BoxCollider2D:
   m_ObjectHideFlags: 0
