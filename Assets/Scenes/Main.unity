@@ -1421,7 +1421,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventName
-      value: Derric Died
+      value: Derric Fainted
       objectReference: {fileID: 0}
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventResponsibilityWeight
@@ -4984,7 +4984,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventName
-      value: Evil Kevin Died
+      value: Evil Kevin Fainted
       objectReference: {fileID: 0}
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventResponsibilityWeight
@@ -5923,7 +5923,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventName
-      value: Good Kevin Died
+      value: Good Kevin Fainted
       objectReference: {fileID: 0}
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventResponsibilityWeight
@@ -8337,7 +8337,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventName
-      value: Marquit Died
+      value: Marquit Fainted
       objectReference: {fileID: 0}
     - target: {fileID: 12039056484386786, guid: e00b180e4bbab62c5a55bb1c710a34c7, type: 3}
       propertyPath: deathEventResponsibilityWeight
