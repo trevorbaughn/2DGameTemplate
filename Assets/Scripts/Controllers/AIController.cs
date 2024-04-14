@@ -5,9 +5,11 @@ using UnityEngine;
 
 public abstract class AIController : Controller
 {
-    public enum AIStates {Idle, Watch, WatchAndShoot};
+    public enum AIStates {Idle, Watch, WatchAndShoot, TellFriend};
     [SerializeField] protected AIStates currentState;
     protected float timeEnteredCurrentState;
+    
+    protected NPCPawn Pawn;
 
     public GameObject target;
     [SerializeField] private float rotationOffset;
@@ -19,6 +21,8 @@ public abstract class AIController : Controller
         
         //add itself to list of ais
         GameManager.instance.ais.Add(this);
+
+        Pawn = GetComponent<NPCPawn>();
     }
     
     protected void OnDestroy()
@@ -61,4 +65,5 @@ public abstract class AIController : Controller
         float angle = (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg)+90+rotationOffset;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
+    
 }

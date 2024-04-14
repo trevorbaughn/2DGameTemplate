@@ -6,6 +6,8 @@ using UnityEngine;
 public class AIVision : MonoBehaviour
 {
     public List<PlayerController> playersInSight;
+
+    public List<GameObject> sightableObjectsInSight;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +16,11 @@ public class AIVision : MonoBehaviour
             playersInSight.Add(collision.gameObject.GetComponent<PlayerController>());
             
             EventManager.instance.aisCanSeePlayer.Add(this.GetComponentInParent<AIController>());
+        }
+
+        if (collision.CompareTag("Sightable"))
+        {
+            sightableObjectsInSight.Add(collision.gameObject);
         }
     }
 
@@ -24,6 +31,11 @@ public class AIVision : MonoBehaviour
             playersInSight.Remove(collision.gameObject.GetComponent<PlayerController>());
             
             EventManager.instance.aisCanSeePlayer.Remove(this.GetComponentInParent<AIController>());
+        }
+        
+        if (sightableObjectsInSight.Contains(collision.gameObject))
+        {
+            sightableObjectsInSight.Remove(collision.gameObject);
         }
     }
 }
