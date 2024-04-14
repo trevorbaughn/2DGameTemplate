@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d855f3d62cb72fa81fbc70b922f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impressionOfPlayer: 0
 --- !u!114 &1112854418424451923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 0}
   currentState: 0
+  target: {fileID: 7458408232621436277}
 --- !u!114 &3749535758449508628
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class OpinionHolder : MonoBehaviour
 {
+    public int impressionOfPlayer = 0; //negatives are a negative impression, positives are positive, and 0 is neutral
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {

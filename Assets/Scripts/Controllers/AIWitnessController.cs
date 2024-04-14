@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Controllers
@@ -12,8 +13,6 @@ namespace Controllers
             base.Start();
         
             ChangeState(AIStates.Idle);
-
-            TargetPosition = this.transform.position;
         }
 
         protected override void MakeDecisions()
@@ -24,6 +23,15 @@ namespace Controllers
             {
                 case AIStates.Idle:
                     DoIdleState();
+
+                    if (IsTimePassed(1))
+                    {
+                        ChangeState(AIStates.Watch);
+                    }
+                    break;
+                case AIStates.Watch:
+                    DoWatchState();
+                    
                     break;
             }
         }
@@ -31,6 +39,11 @@ namespace Controllers
         private void DoIdleState()
         {
             //do nothing
+        }
+
+        private void DoWatchState()
+        {
+            RotateTowards(target.transform.position);
         }
     }
 }
