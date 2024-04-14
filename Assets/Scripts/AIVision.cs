@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controllers;
@@ -22,6 +23,11 @@ public class AIVision : MonoBehaviour
         {
             sightableObjectsInSight.Add(collision.gameObject);
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)

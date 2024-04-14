@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
+    public bool isDead = false;
 
     public string deathEventName;
     public float deathEventResponsibilityWeight;
@@ -59,7 +60,8 @@ public class Health : MonoBehaviour
     public void Die()
     {
         this.gameObject.SetActive(false);
-       
+        isDead = true;
+        
         //TODO: play death sound
         
         EventManager.instance.FormImpressions(deathEventName, deathEventResponsibilityWeight);

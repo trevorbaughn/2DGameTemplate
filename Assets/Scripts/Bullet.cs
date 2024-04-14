@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour, IKillable
     //when this enters another object, run
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Damageable"))
+        if (other.GetComponent<Health>() != null)
         {
             other.GetComponent<Health>().TakeDamage(damage);
         }
