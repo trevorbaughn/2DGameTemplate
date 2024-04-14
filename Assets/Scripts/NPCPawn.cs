@@ -6,6 +6,8 @@ using UnityEngine;
 public class NPCPawn : Pawn, IKillable
 {
     public Health health;
+
+    
     
     protected override void Start()
     {
