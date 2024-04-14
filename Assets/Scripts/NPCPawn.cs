@@ -16,7 +16,10 @@ public class NPCPawn : Pawn, IKillable
         health = GetComponent<Health>();
     }
 
-
+    public void SayText()
+    {
+        
+    }
 
 
     /// <summary>

@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class OpinionHolder : MonoBehaviour
 {
-    public int impressionOfPlayer = 0; //negatives are a negative impression, positives are positive, and 0 is neutral
-    
-    
-    
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool isGood = true;
+
+    private List<Opinion> _impressions;
+
+    public float ImpressionOfPlayer()
     {
-        
+        float impression = 0;
+        foreach(Opinion opinion in _impressions)
+        {
+            impression += opinion.responsibilityWeight;
+        }
+
+        return impression;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateOpinion(string eventName, float objectiveResponsibility)
     {
-        
+        if (!isGood)
+        {
+            objectiveResponsibility *= -1;
+        }
+        _impressions.Add(new Opinion(eventName, objectiveResponsibility));
     }
+
+    public void GiveOpinion(OpinionHolder toGiveTo, Opinion toGive)
+    {
+        toGiveTo.CreateOpinion(toGive.name, toGive.responsibilityWeight);
+    }
+
+    
 }

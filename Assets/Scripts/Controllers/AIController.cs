@@ -10,7 +10,8 @@ public abstract class AIController : Controller
     protected float timeEnteredCurrentState;
 
     [SerializeField] protected GameObject target;
-
+    [SerializeField] private float rotationOffset;
+    
     // Start is called before the first frame update
     protected new virtual void Start()
     {
@@ -57,7 +58,7 @@ public abstract class AIController : Controller
         target.x = target.x - objectPos.x;
         target.y = target.y - objectPos.y;
 
-        float angle = (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg)+90;
+        float angle = (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg)+90+rotationOffset;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
