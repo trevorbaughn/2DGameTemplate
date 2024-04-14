@@ -28,7 +28,7 @@ public class OpinionHolder : MonoBehaviour
 
     public void CreateOpinion(string eventName, float objectiveResponsibility)
     {
-        Debug.Log("Create Opinion: " + this.name + ", " + eventName);
+        Debug.Log("Create Opinion: " + this.name + ", " + eventName + ", " + objectiveResponsibility);
         if (!isGood)
         {
             objectiveResponsibility *= -1;

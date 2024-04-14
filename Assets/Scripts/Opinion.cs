@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Opinion : MonoBehaviour
 {
-    public string name;
+    public new string name;
     public float responsibilityWeight;
     
     public Opinion(string eventName, float responsibilityToAdd)
