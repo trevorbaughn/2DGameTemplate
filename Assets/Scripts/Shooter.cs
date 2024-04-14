@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controllers;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
     #region Variables
+
     public float timeBetweenShots;
     public float shootForce;
+    public BulletManager bulletManager;
 
     private Vector3 _mousePos;
     #endregion Variables
@@ -24,7 +27,7 @@ public class Shooter : MonoBehaviour
     public void Shoot(GameObject bulletPrefab, float shootForce, Pawn shooter, Transform shootPoint)
     {
         //create bullet
-        GameObject bullet = BulletManager.instance.GetBullet(shootPoint.position,
+        GameObject bullet = bulletManager.GetBullet(shootPoint.position,
                                         transform.rotation);
 
         //send it data from Bullet component
@@ -35,14 +38,23 @@ public class Shooter : MonoBehaviour
         {
             //then give it properties
             projectile.owner = shooter;
-            projectile.bm = BulletManager.instance;
+            projectile.bm = bulletManager;
         }
 
         //push it at force
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         if (bulletRb != null)
         {
-            bulletRb.AddForce(-(this.transform.position - _mousePos).normalized * shootForce);
+            AIController aiController = GetComponent<AIController>();
+            if (aiController != null)
+            {
+                bulletRb.AddForce(-(this.transform.position - aiController.target.transform.position).normalized * shootForce);
+            }
+            else
+            {
+                bulletRb.AddForce(-(this.transform.position - _mousePos).normalized * shootForce);
+            }
+            
         }
     }
 

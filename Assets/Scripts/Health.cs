@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
     {
         //take the damage
         currentHealth -= amount;
+        StartCoroutine(Shake(0.15f));
 
         //TODO: play hitsound
 
@@ -26,6 +27,16 @@ public class Health : MonoBehaviour
         {
             currentHealth = 0;
             Die();
+        }
+    }
+    
+    IEnumerator Shake(float amount) {
+        for ( int i = 0; i < 2; i++)
+        {
+            transform.localPosition += new Vector3(amount, 0, 0);
+            yield return new WaitForSeconds(0.05f);
+            transform.localPosition -= new Vector3(amount, 0, 0);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 

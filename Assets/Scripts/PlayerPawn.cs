@@ -56,7 +56,7 @@ public class PlayerPawn : Pawn, IKillable
     /// </summary>
     public void Shoot()
     {
-        shooter.Shoot(BulletManager.instance.prefab, shooter.shootForce, this, shootPoint.transform);
+        shooter.Shoot(shooter.bulletManager.prefab, shooter.shootForce, this, shootPoint.transform);
     }
 
 

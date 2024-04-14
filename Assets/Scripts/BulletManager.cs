@@ -16,18 +16,8 @@ public class BulletManager : MonoBehaviour
     //Awake is called before Start
     private void Awake()
     {
-        if (instance == null)
-        {
-            //this is THE bullet manager
-            instance = this;
-            //don't kill it in a new scene.
-            DontDestroyOnLoad(gameObject);
-        }
-        else //this isn't THE bullet manager
-        {
-            Destroy(gameObject);
-        }
-        
+        //don't kill it in a new scene.
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update

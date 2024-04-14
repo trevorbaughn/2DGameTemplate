@@ -5,11 +5,11 @@ using UnityEngine;
 
 public abstract class AIController : Controller
 {
-    public enum AIStates {Idle, Watch, Chase};
+    public enum AIStates {Idle, Watch, WatchAndShoot};
     [SerializeField] protected AIStates currentState;
     protected float timeEnteredCurrentState;
 
-    [SerializeField] protected GameObject target;
+    public GameObject target;
     [SerializeField] private float rotationOffset;
     
     // Start is called before the first frame update

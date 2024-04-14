@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour, IKillable
     {
         if (bm.pool.Count > bm.numOfBullets)
         {
-            BulletManager.instance.pool.Remove(this.gameObject);
+            bm.pool.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
         else
