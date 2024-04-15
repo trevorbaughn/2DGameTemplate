@@ -10,6 +10,8 @@ public abstract class AIController : Controller
     protected float timeEnteredCurrentState;
     
     protected NPCPawn Pawn;
+    public Emoter emoter;
+    private OpinionHolder _impression;
 
     public GameObject target;
     [SerializeField] private float rotationOffset;
@@ -23,7 +25,30 @@ public abstract class AIController : Controller
         GameManager.instance.ais.Add(this);
 
         Pawn = GetComponent<NPCPawn>();
+        emoter = GetComponentInChildren<Emoter>();
+        _impression = GetComponent<OpinionHolder>();
     }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        
+        if (_impression.ImpressionOfPlayer() > 0)
+        { 
+            emoter.ChangeEmoteState(Emoter.EmoteStates.Happy);
+        }
+        else if (_impression.ImpressionOfPlayer() == 0)
+        {
+            emoter.ChangeEmoteState(Emoter.EmoteStates.Neutral);
+        }
+        else if (_impression.ImpressionOfPlayer() < 0)
+        {
+            emoter.ChangeEmoteState(Emoter.EmoteStates.Sad);
+        }
+    }
+        
+
     
     protected void OnDestroy()
     {
